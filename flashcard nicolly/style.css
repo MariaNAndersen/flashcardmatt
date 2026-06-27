@@ -1,0 +1,184 @@
+/* IMPORTANDO FONTES DO GOOGLE */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Poppins:wght@300;400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0b0c0e; /* Preto carvão bem profundo */
+    color: #e2e8f0;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    padding-bottom: 60px;
+}
+
+/* CABEÇALHO TEMÁTICO FLAMEJANTE */
+.cabecalho {
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(180deg, #18110b 0%, #0b0c0e 100%);
+    border-bottom: 3px solid #ff4500; /* Linha cor de fogo */
+    margin-bottom: 40px;
+    box-shadow: 0 4px 25px rgba(255, 69, 0, 0.2);
+}
+
+.cabecalho h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 3.2rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #ffaa00; /* Dourado fogo */
+    text-transform: uppercase;
+    text-shadow: 0 0 15px rgba(255, 69, 0, 0.6), 0 0 30px rgba(255, 165, 0, 0.3);
+}
+
+.subtitulo {
+    font-size: 1.1rem;
+    color: #a0aec0;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* ALINHAMENTO DOS CARTÕES */
+main section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ESTRUTURA DO FLASHCARD */
+.cartao {
+    background-color: transparent;
+    width: 280px;
+    height: 400px;
+    perspective: 1000px; /* Cria o efeito 3D */
+}
+
+.cartao-interno {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+/* Gira o card ao passar o rato */
+.cartao:hover .cartao-interno {
+    transform: rotateY(180deg);
+}
+
+/* CONFIGURAÇÃO DE FRENTE E VERSO */
+.cartao-frente, .cartao-verso {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* IMPORTANTE: Esconde o lado de trás */
+    -webkit-backface-visibility: hidden;
+    border-radius: 15px;
+    border: 2px solid #ff5500; /* Borda permanente cor de chamas */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
+}
+
+/* LADO DA FRENTE */
+.cartao-frente {
+    background: linear-gradient(135deg, #13151a 0%, #1f232b 100%);
+}
+
+/* LADO DO VERSO */
+.cartao-verso {
+    background: linear-gradient(135deg, #1f232b 0%, #13151a 100%);
+    transform: rotateY(180deg); /* Já começa invertido para desvirar no giro */
+    padding: 25px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ENQUADRAMENTO DA IMAGEM NA FRENTE */
+.cartao-imagem {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Corta e ajusta perfeitamente na caixinha */
+    border-bottom: 2px solid #ff5500;
+}
+
+/* TEXTOS DOS CARTÕES */
+.cartao p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #e2e8f0;
+}
+
+.cartao-frente p {
+    padding: 20px;
+    font-size: 0.95rem;
+    margin: auto 0;
+}
+
+.cartao-verso p {
+    font-size: 0.9rem;
+    color: #f1f5f9;
+}
+
+/* TÍTULOS DO VERSO (VERDADE / MITO) */
+.cartao-verso p strong {
+    display: block;
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.cartao-verso p.verdade strong {
+    color: #2ecc71; /* Verde */
+}
+
+.cartao-verso p.mito strong {
+    color: #e74c3c; /* Vermelho */
+}
+
+.emoji {
+    font-size: 1.3rem;
+    vertical-align: middle;
+}
+
+/* ENQUADRAMENTO DA IMAGEM NA FRENTE */
+.cartao-imagem {
+    width: 100%;
+    height: 180px;            /* Altura fixa perfeita */
+    object-fit: cover;        /* Preenche o espaço e corta as sobras sem distorcer */
+    object-position: center;  /* Foca exatamente no meio da imagem */
+    border-bottom: 2px solid #ff5500;
+}
+
+/* ENQUADRAMENTO DA IMAGEM NO VERSO */
+.cartao-imagem-verso {
+    width: 100%;
+    height: 180px;            /* Mesma altura da frente para manter o padrão */
+    object-fit: cover;        /* Preenche o espaço e corta as sobras sem distorcer */
+    object-position: center;  /* Foca exatamente no meio da imagem */
+    border-bottom: 2px solid #ff5500;
+    margin-bottom: auto;
+}
+
+/* Ajuste rápido para o verso alinhar a imagem no topo */
+.cartao-verso {
+    justify-content: flex-start; /* Alinha os itens começando do topo */
+    padding: 0 0 15px 0;        /* Remove o padding do topo para colar a imagem */
+}
+
+.cartao-verso p {
+    padding: 10px 20px;         /* Devolve o espaçamento interno para o texto do verso */
+}
